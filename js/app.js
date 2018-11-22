@@ -6,20 +6,23 @@ $(document).ready(function () {
     }).done(function (result) {
         $.each(result, function (idx, element) {
             var row = $('<tr>');
-            var td = $('<td>')
+            var td = $('<td>');
 
             row.append(td);
         })
         for (var i = 0; i < result.length; i++) {
-            $('tbody').append('<tr><td>' + rresult[i].isbn + '</td><td>' + result[i].title + '<div data-id="id"></div></td>');
+            $('tbody').append('<tr id="myRow"><td>' + result[i].isbn + '</td><td class="titleBook">' + result[i].title + '<div data-id="id"></div></td>');
         }
     });
 
-    var titleElement = $('tr :nth-child(2)');
-    console.log(titleElement);
-    $('tr :nth-child(2)').on('click', function () {
-        console.log('klik');
+    var titleElement = $('tbody').next();
+    console.log(titleElement[0]);
+    // titleElement.on('click', function () {
+    //     console.log('test');
+    // });
+    titleElement.each(function (index, element) {
+        console.log($(element));
     })
-});
+})
 
 
